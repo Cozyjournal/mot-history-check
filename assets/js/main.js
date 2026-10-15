@@ -68,10 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
     plateForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const vrm = plateInput ? plateInput.value.trim().replace(/\s+/g, '') : '';
+      const basePath = window.location.pathname.startsWith('/mot-history-check') ? '/mot-history-check' : '';
       if (vrm) {
-        window.location.href = `/how-to-check-mot-history/?vrm=${encodeURIComponent(vrm)}`;
+        window.location.href = `${basePath}/how-to-check-mot-history/?vrm=${encodeURIComponent(vrm)}`;
       } else {
-        window.location.href = `/how-to-check-mot-history/`;
+        window.location.href = `${basePath}/how-to-check-mot-history/`;
       }
     });
   }
