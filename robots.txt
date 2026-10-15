@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mothistorycheck.co.uk/sitemap.xml
+Sitemap: https://cozyjournal.github.io/mot-history-check/sitemap.xml
