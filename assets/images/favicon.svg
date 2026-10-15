@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#050810"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="url(#grad)" stroke-width="2"/>
+  <path d="M32 12 L48 20 V34 C48 44 41 50 32 54 C23 50 16 44 16 34 V20 Z" fill="url(#grad)" opacity="0.2"/>
+  <path d="M32 14 L46 21 V33 C46 42 39 48 32 51 C25 48 18 42 18 33 V21 Z" fill="none" stroke="url(#grad)" stroke-width="3"/>
+  <text x="32" y="38" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="900" fill="#00E5FF" text-anchor="middle" letter-spacing="1">MOT</text>
+</svg>
