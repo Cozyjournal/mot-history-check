@@ -1,550 +1,201 @@
-<!-- TODO: replace canonical base when we own a real domain -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Check MOT History — Free UK Vehicle MOT History Guide</title>
-  <meta name="description" content="Learn how to check any UK vehicle's MOT history for free. Step-by-step guide, failure reasons, advisories explained, and MOT due date checker.">
-  <link rel="canonical" href="https://cozyjournal.github.io/mot-history-check/">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Social Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Check MOT History — Free UK Vehicle MOT History Guide">
-  <meta property="og:description" content="Learn how to check any UK vehicle's MOT history for free. Step-by-step guide, failure reasons, advisories explained, and MOT due date checker.">
-  <meta property="og:url" content="https://cozyjournal.github.io/mot-history-check/">
-  <meta property="og:site_name" content="MOT History Check">
-  <meta property="og:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/favicon.svg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Google Fonts: Space Grotesk & Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/mot-history-check/assets/images/favicon.svg">
-
-  <!-- Shared CSS -->
-  <link rel="stylesheet" href="/mot-history-check/assets/css/style.css">
-
-  <!-- Structured Data: WebSite & Article & FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://cozyjournal.github.io/mot-history-check/#website",
-        "url": "https://cozyjournal.github.io/mot-history-check/",
-        "name": "MOT History Check",
-        "description": "Check any UK vehicle's MOT history — free guide",
-        "publisher": {
-          "@type": "Organization",
-          "name": "MOT History Check",
-          "url": "https://cozyjournal.github.io/mot-history-check/"
-        }
-      },
-      {
-        "@type": "Article",
-        "@id": "https://cozyjournal.github.io/mot-history-check/#article",
-        "headline": "Check MOT History — Free UK Vehicle MOT History Guide",
-        "description": "Learn how to check any UK vehicle's MOT history for free. Step-by-step guide, failure reasons, advisories explained, and MOT due date checker.",
-        "author": {
-          "@type": "Organization",
-          "name": "MOT History Check Editorial Team"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "MOT History Check"
-        },
-        "datePublished": "2024-01-15T08:00:00+00:00",
-        "dateModified": "2024-10-15T12:00:00+00:00",
-        "mainEntityOfPage": "https://cozyjournal.github.io/mot-history-check/"
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cozyjournal.github.io/mot-history-check/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Can I check an MOT history without a registration number?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. The official DVSA MOT database requires a valid UK vehicle registration number (number plate) to retrieve test records."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How far back does UK MOT history go?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Digital MOT records in England, Scotland, and Wales date back to 2005. Every test result, advisory, failure item, and recorded mileage since 2005 is stored online."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is checking MOT history free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, checking vehicle MOT history on the official GOV.UK service is 100% free with no account or payment required."
-            }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Check MOT History by Number Plate | Free UK MOT Guide</title>
+<meta name="description" content="Check any UK vehicle's MOT history from its number plate. Learn what passes, fails, advisories and mileage readings mean, and how to spot clocked cars before you buy.">
+<link rel="canonical" href="https://cozyjournal.github.io/mot-history-check/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Check MOT History by Number Plate | Free UK MOT Guide">
+<meta property="og:description" content="Look up a UK vehicle's MOT history and learn how to read it before you buy.">
+<meta property="og:url" content="https://cozyjournal.github.io/mot-history-check/">
+<meta property="og:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cozyjournal.github.io/mot-history-check/#website",
+      "url": "https://cozyjournal.github.io/mot-history-check/",
+      "name": "MOT History Check",
+      "description": "Free UK MOT history guide and vehicle test checker."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cozyjournal.github.io/mot-history-check/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is checking MOT history free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The official GOV.UK MOT history service is free and only needs the vehicle's registration number."
           }
-        ]
-      }
-    ]
-  }
-  </script>
+        },
+        {
+          "@type": "Question",
+          "name": "How far back does MOT history go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For cars, motorcycles and vans, GOV.UK shows tests done since 2005. HGVs, trailers, buses and coaches go back to 2018, and Northern Ireland results start in 2017."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need the V5C logbook to check MOT history?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No for the test results, which only need the number plate. To see where each test was done, GOV.UK asks for the 11-digit reference number from the V5C."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How early can I get an MOT without losing my renewal date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can take the test up to a month (minus a day) before the current certificate expires and keep the same renewal date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the fine for driving without an MOT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Driving without a valid MOT can lead to a fine of up to £1,000. Separately, driving a vehicle in a dangerous condition carries fines up to £2,500 and 3 penalty points."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
-<body class="theme-dark">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="/mot-history-check/" class="brand-link" aria-label="MOT History Check Home">
-        <span class="brand-badge">MOT</span>
-        <div class="brand-text">
-          <span class="brand-title">MOT History Check</span>
-          <span class="brand-subtitle">Free UK Vehicle Guide</span>
-        </div>
-      </a>
+<header>
+<div class="wrap">
+<nav aria-label="Main navigation">
+<a class="brand" href="./"><i>MOT</i>History Check</a>
+<a href="how-to-check-mot-history/">How to check</a>
+<a href="mot-failure-reasons/">Failure reasons</a>
+<a href="mot-advisories-explained/">Advisories</a>
+<a href="when-is-my-mot-due/">MOT due</a>
+<a href="faq/">FAQ</a>
+</nav>
 
-      <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
+<div class="hero">
+<h1>Scan any UK plate. See the full MOT history.</h1>
+<p class="lead">Past passes, fails, advisories and mileage in one place, plus a plain-English guide to what it all means.</p>
+<form class="check" id="f" autocomplete="off">
+<label class="plate" id="plate">
+<span class="gb" aria-hidden="true">GB</span>
+<input id="reg" name="reg" maxlength="8" placeholder="AB12 CDE" aria-label="Vehicle registration number" autocapitalize="characters" spellcheck="false" required>
+</label>
+<button class="go" type="submit">Check MOT history</button>
+</form>
+<p class="note" id="mode">Results come from official DVSA records. Free, no sign-up.</p>
+<div id="result" role="status" aria-live="polite"></div>
+</div>
+</div>
+</header>
 
-      <nav id="primaryNav">
-        <ul class="nav-menu">
-          <li><a href="/mot-history-check/" class="nav-link active">Home</a></li>
-          <li><a href="/mot-history-check/how-to-check-mot-history/" class="nav-link">How to Check</a></li>
-          <li><a href="/mot-history-check/mot-failure-reasons/" class="nav-link">Fail Reasons</a></li>
-          <li><a href="/mot-history-check/mot-advisories-explained/" class="nav-link">Advisories</a></li>
-          <li><a href="/mot-history-check/when-is-my-mot-due/" class="nav-link">MOT Due</a></li>
-          <li><a href="/mot-history-check/faq/" class="nav-link">FAQ</a></li>
-          <li><a href="/mot-history-check/how-to-check-mot-history/" class="nav-cta">Check MOT History →</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<main id="main">
+<section id="read"><div class="wrap">
+<h2>What an MOT record shows</h2>
+<p class="prose">Every test is stored against the number plate. For cars, motorcycles and vans the online record goes back to 2005.</p>
+<div class="grid">
+<div class="tile"><h3>Pass or fail, and when</h3><p>Each test date and result, plus the certificate expiry and when the next MOT is due.</p></div>
+<div class="tile"><h3>Mileage at every test</h3><p>The odometer reading recorded each year. A reading that drops is the quickest sign of clocking.</p></div>
+<div class="tile"><h3>Failures and advisories</h3><p>What failed, and what the tester flagged as worn or likely to fail soon.</p></div>
+<div class="tile"><h3>Safety recalls</h3><p>Depending on the manufacturer, the record can also show an open safety recall.</p></div>
+</div>
+<h3 style="margin-top:38px">How defects are graded</h3>
+<div class="grades">
+<div class="grade warn"><b>Advisory</b><span>Worth monitoring or repairing. Not a fail on its own.</span></div>
+<div class="grade warn"><b>Minor</b><span>Not serious enough to fail the vehicle. Fix it soon.</span></div>
+<div class="grade fail"><b>Major</b><span>Fails the test. Repair before the vehicle is driven again.</span></div>
+<div class="grade fail"><b>Dangerous</b><span>Fails the test. Illegal to drive on public roads, even if the previous MOT has not expired.</span></div>
+</div>
+</div></section>
 
-  <main id="main-content">
-    <!-- SECTION 1: HERO -->
-    <section class="hero-section">
-      <div class="orb-bg" aria-hidden="true">
-        <div class="aurora-layer"></div>
-      </div>
+<section id="buying"><div class="wrap">
+<h2>Spot a clocked car in seconds</h2>
+<p class="prose">Read the record oldest test first. Mileage should only go up. Also watch for the same defect every year, and fails followed by a pass with no repair detail.</p>
+<div class="trace">
+<figure class="chart" style="margin:0">
+<svg viewBox="0 0 600 230" role="img" aria-label="Chart: mileage rises from 41,300 to 52,900 then drops to 33,100">
+<g stroke="rgba(140,180,255,.2)"><line x1="40" y1="30" x2="580" y2="30"/><line x1="40" y1="100" x2="580" y2="100"/><line x1="40" y1="170" x2="580" y2="170"/></g>
+<polyline points="90,122 300,53" fill="none" stroke="#3de0ff" stroke-width="4" stroke-linecap="round"/>
+<polyline points="300,53 510,171" fill="none" stroke="#ff6b6b" stroke-width="4" stroke-dasharray="9 8" stroke-linecap="round"/>
+<g fill="#070d1a" stroke-width="4"><circle cx="90" cy="122" r="8" stroke="#3de0ff"/><circle cx="300" cy="53" r="8" stroke="#3de0ff"/><circle cx="510" cy="171" r="8" stroke="#ff6b6b"/></g>
+<g fill="#e9f0ff" font-family="JetBrains Mono,monospace" font-size="15" text-anchor="middle">
+<text x="90" y="104">41,300</text><text x="300" y="35">52,900</text><text x="510" y="153" fill="#ff6b6b">33,100</text>
+<text x="90" y="212" fill="#9aabc9">2021</text><text x="300" y="212" fill="#9aabc9">2022</text><text x="510" y="212" fill="#9aabc9">2023</text></g>
+</svg>
+<figcaption class="cap">Example mileage trace, not a real vehicle.</figcaption>
+</figure>
+<div>
+<div class="flag">Mileage is 19,800 lower than the year before. Ask the seller to explain before going further.</div>
+<p class="prose" style="margin-top:18px">An MOT only shows condition on the day of the test. Pair it with service history, a V5C check and a vehicle history check for finance, write-off and stolen markers.</p>
+</div>
+</div>
+</div></section>
 
-      <div class="container hero-content">
-        <div class="badge badge-cyan" style="margin-bottom: 1.25rem;">UK's Free MOT Guide</div>
-        <h1>Know Your Car's <span class="gradient-text">Full Story.</span></h1>
-        <p class="hero-subtitle">Check any UK vehicle's MOT history — free, in 2 minutes.</p>
+<section id="facts"><div class="wrap">
+<h2>Key MOT facts</h2>
+<table>
+<tr><th>First MOT</th><td>3 years after first registration in England, Scotland and Wales. 4 years in Northern Ireland.</td></tr>
+<tr><th>After that</th><td>Every 12 months.</td></tr>
+<tr><th>Testing early</th><td>Up to a month (minus a day) before expiry keeps the same renewal date.</td></tr>
+<tr><th>Maximum fee, car</th><td>£54.85. Many test centres charge less.</td></tr>
+<tr><th>No valid MOT</th><td>Fine of up to £1,000. Separately, driving a vehicle in a dangerous condition can mean up to £2,500 and 3 penalty points.</td></tr>
+<tr><th>Exemptions</th><td>Most vehicles first registered over 40 years ago and not substantially changed.</td></tr>
+<tr><th>Record coverage</th><td>Cars, motorcycles, vans: since 2005. HGVs, trailers, buses, coaches: since 2018. Northern Ireland: since 2017.</td></tr>
+</table>
+<p class="cap" style="margin-top:12px">Source: GOV.UK. Check <a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener">gov.uk/check-mot-history</a> for the latest rules.</p>
+</div></section>
 
-        <!-- Futuristic UK Number-Plate Mock Input -->
-        <div class="plate-search-wrapper">
-          <form id="plateForm" class="plate-box" action="/mot-history-check/how-to-check-mot-history/" method="GET">
-            <div class="uk-flag-tag" aria-hidden="true">
-              <svg viewBox="0 0 60 30" width="22" height="12">
-                <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
-                <clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
-                <g clip-path="url(#s)">
-                  <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
-                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
-                  <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
-                </g>
-              </svg>
-              <span>UK</span>
-            </div>
-            <input type="text" id="vrmInput" name="vrm" class="plate-input" placeholder="e.g. AB12 CDE" maxlength="8" autocomplete="off" spellcheck="false" aria-label="Enter UK vehicle registration number">
-            <button type="submit" class="plate-submit-btn">
-              <span>Check MOT History</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
-          </form>
-        </div>
+<section id="faq-section"><div class="wrap">
+<h2>Questions people ask</h2>
+<details><summary>Is checking MOT history free?</summary><p>Yes. The official GOV.UK service is free and needs only the registration number. Be cautious of sites that charge for a basic MOT check.</p></details>
+<details><summary>How far back does MOT history go?</summary><p>Cars, motorcycles and vans: tests since 2005. HGVs, trailers, buses and coaches: since 2018. Northern Ireland results start in 2017.</p></details>
+<details><summary>Do I need the V5C logbook?</summary><p>Not for the results, which only need the number plate. To see where each test was done, GOV.UK asks for the 11-digit reference number from the V5C.</p></details>
+<details><summary>Can I get an MOT early without losing my renewal date?</summary><p>Yes, up to a month (minus a day) before the current certificate expires.</p></details>
+<details><summary>What happens if my vehicle fails with a dangerous defect?</summary><p>You must not drive it on public roads until it is repaired, even if the previous MOT certificate is still valid.</p></details>
+<p style="margin-top:24px"><a href="faq/">Read all 15 frequently asked questions &rarr;</a></p>
+</div></section>
+</main>
 
-        <div class="hero-trust-row">
-          <span class="trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            No signup required
-          </span>
-          <span class="trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            100% Free
-          </span>
-          <span class="trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Official GOV.UK data guidance
-          </span>
-        </div>
-      </div>
-    </section>
+<footer><div class="wrap">
+<p>Independent guide, not affiliated with GOV.UK or the DVSA. Vehicle data comes from official DVSA records. Last reviewed: October 2026.</p>
+<ul>
+<li><a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener">GOV.UK MOT history</a></li>
+<li><a href="https://www.gov.uk/check-mot-status" target="_blank" rel="noopener">GOV.UK MOT status</a></li>
+<li><a href="how-to-check-mot-history/">How to check</a></li>
+<li><a href="mot-failure-reasons/">Failure reasons</a></li>
+<li><a href="mot-advisories-explained/">Advisories</a></li>
+<li><a href="when-is-my-mot-due/">MOT due</a></li>
+<li><a href="mot-cost/">MOT cost</a></li>
+<li><a href="mot-exemptions/">Exemptions</a></li>
+<li><a href="faq/">FAQ</a></li>
+<li><a href="about/">About</a></li>
+<li><a href="contact/">Contact</a></li>
+<li><a href="privacy-policy/">Privacy</a></li>
+</ul>
+<p>&copy; <span id="yr">2026</span> MOT History Check</p>
+</div></footer>
 
-    <!-- SECTION 2: LIVE STATS BAR -->
-    <section class="stats-bar-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">450K+</div>
-            <div class="stat-label">Monthly MOT Checks in UK</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">38M+</div>
-            <div class="stat-label">Licensed UK Vehicles on Roads</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">30%</div>
-            <div class="stat-label">Fail First MOT Test Attempt</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">£1,000</div>
-            <div class="stat-label">Max Fine for Driving Without MOT</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: WHAT YOU'LL SEE -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">WHAT YOU'LL SEE</span>
-          <h2>What You'll See on an MOT Record</h2>
-          <p>Every annual MOT test since 2005 is recorded permanently on the DVSA central database. Here is what you uncover.</p>
-        </div>
-
-        <div class="grid-4">
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            </div>
-            <h3>Pass/Fail Record</h3>
-            <p>View the complete chronology of every test date, exact pass or fail status, testing station location, and certificate expiry dates.</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-            </div>
-            <h3>Advisories Explained</h3>
-            <p>Uncover minor defects and parts flagged for future wear — like thinning brake pads or surface rust — before they cause unexpected breakdown.</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            </div>
-            <h3>Mileage History</h3>
-            <p>Audit exact odometer readings taken at every annual inspection to immediately detect clocking scams and mileage rollbacks.</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-            </div>
-            <h3>Defects & Repairs</h3>
-            <p>Review specific categorized defects: Minor, Major, and Dangerous items, helping you inspect past repair quality prior to purchase.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: HOW IT WORKS (3-STEP TIMELINE) -->
-    <section class="section" style="background: rgba(0, 0, 0, 0.25);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">HOW IT WORKS</span>
-          <h2>How to Check Any UK MOT in 3 Steps</h2>
-          <p>You do not need a V5C logbook or registration document to inspect roadworthiness history — only the registration plate.</p>
-        </div>
-
-        <div class="timeline-steps">
-          <div class="timeline-step">
-            <div class="step-num">1</div>
-            <h3>Enter Registration Number</h3>
-            <p>Grab the number plate of any UK car, van, or motorcycle you own or intend to purchase from a dealership or private seller.</p>
-          </div>
-
-          <div class="timeline-step">
-            <div class="step-num">2</div>
-            <h3>Open Official GOV.UK Check</h3>
-            <p>Navigate to the DVSA's free MOT history database service. Our step-by-step tutorial links directly to the secure portal.</p>
-          </div>
-
-          <div class="timeline-step">
-            <div class="step-num">3</div>
-            <h3>Read Full Test History</h3>
-            <p>Analyze past test passes, examine mileage progression curves, and identify any active major or dangerous safety defects.</p>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem;">
-          <a href="/mot-history-check/how-to-check-mot-history/" class="btn btn-primary">Read Full Step-by-Step Guide →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: SAMPLE MOT REPORT PREVIEW -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">SAMPLE PREVIEW</span>
-          <h2>Sample MOT Report Preview</h2>
-          <p>Here is an authentic breakdown of what an official DVSA test certificate transcript looks like.</p>
-        </div>
-
-        <div class="preview-card-wrapper">
-          <div class="preview-card">
-            <div class="preview-label-badge">Sample Preview — real report comes from GOV.UK</div>
-
-            <div class="report-header">
-              <div>
-                <span class="report-vrm">EA18 XYZ</span>
-                <div class="report-vehicle-info" style="margin-top: 0.5rem;">
-                  <strong>VOLKSWAGEN GOLF (2018)</strong> • Blue • 1.5L Petrol • Hatchback
-                </div>
-              </div>
-              <div>
-                <span class="badge badge-green" style="font-size: 0.9rem; padding: 0.5rem 1rem;">MOT STATUS: VALID</span>
-              </div>
-            </div>
-
-            <!-- Pass Record -->
-            <div class="report-test-row">
-              <div class="test-meta">
-                <div>
-                  <span class="badge badge-green" style="margin-right: 0.5rem;">PASS</span>
-                  <span class="test-date">Tested 14 May 2024</span>
-                </div>
-                <div class="test-mileage">Odometer: <strong>48,210 miles</strong> • Expiry: <strong>13 May 2025</strong></div>
-              </div>
-              <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.1);">
-                <div style="font-size: 0.825rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Monitor and repair if necessary (advisories):</div>
-                <div class="defect-item">
-                  <span style="color: #F59E0B; font-weight: bold;">•</span>
-                  <span>Front Brake pad(s) wearing thin (1.1.13 (a) (ii))</span>
-                </div>
-                <div class="defect-item">
-                  <span style="color: #F59E0B; font-weight: bold;">•</span>
-                  <span>Nearside Rear Tyre worn close to legal limit 2mm (5.2.3 (e))</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Fail Record (Previous Year) -->
-            <div class="report-test-row" style="opacity: 0.85;">
-              <div class="test-meta">
-                <div>
-                  <span class="badge badge-red" style="margin-right: 0.5rem;">FAIL</span>
-                  <span class="test-date">Tested 10 May 2023</span>
-                </div>
-                <div class="test-mileage">Odometer: <strong>39,120 miles</strong></div>
-              </div>
-              <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.1);">
-                <div style="font-size: 0.825rem; color: #EF4444; text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem;">Do not drive until repaired (dangerous defects):</div>
-                <div class="defect-item">
-                  <span style="color: #EF4444; font-weight: bold;">✕</span>
-                  <span>Nearside Front Tyre has ply or cords exposed (5.2.3 (d) (ii)) — <strong>Dangerous</strong></span>
-                </div>
-                <div style="font-size: 0.825rem; color: #F97316; text-transform: uppercase; font-weight: 700; margin: 0.5rem 0 0.4rem;">Repair immediately (major defects):</div>
-                <div class="defect-item">
-                  <span style="color: #F97316; font-weight: bold;">!</span>
-                  <span>Windscreen wiper does not clear the windscreen effectively (3.4 (b) (ii)) — <strong>Major</strong></span>
-                </div>
-              </div>
-            </div>
-
-            <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 1.25rem; text-align: center;">
-              Notice how the tyre failure in 2023 was repaired to achieve a pass 2 days later. This history helps you verify honest maintenance.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 6: WHY CHECK BEFORE BUYING USED CAR -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">BUYER PROTECTION</span>
-          <h2>Why Check MOT History Before Buying a Used Car?</h2>
-          <p>Over 8 million used cars change hands in the UK every year. Checking the official MOT record protects you against 3 major traps.</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 8 14"></polyline></svg>
-            </div>
-            <h3>1. Spot Clocked Mileage</h3>
-            <p>Odometer fraud adds an estimated £800M per year to used vehicle costs in the UK. By inspecting year-over-year MOT mileage figures, you can immediately spot if a car showing 45,000 miles actually recorded 80,000 miles three years ago.</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            </div>
-            <h3>2. Uncover Chronic Rust & Suspension Faults</h3>
-            <p>Sellers can clean away surface dirt, but they cannot erase past MOT records. You can see recurring advisories for subframe corrosion, leaking shock absorbers, or worn steering linkages that the seller has repeatedly deferred.</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            </div>
-            <h3>3. Avoid Unroadworthy "Dangerous" Fails</h3>
-            <p>If a vehicle has failed its test with a "Dangerous" defect, it is legally forbidden to be driven on UK public roads even if its prior MOT certificate has not expired. Checking first ensures you never commit to a car you cannot legally drive home.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 7: KEY MOT FACTS (GEO SOURCED STATS BOX) -->
-    <section class="section-tight">
-      <div class="container">
-        <div class="stat-quote-box">
-          <div class="stat-quote-title">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <span>Key MOT Facts & Official DVSA Testing Standards</span>
-          </div>
-          <p>According to verified data published by the Driver and Vehicle Standards Agency (DVSA) and the Department for Transport (DfT):</p>
-          <ul style="margin-bottom: 0;">
-            <li><strong>First Test Threshold:</strong> In England, Scotland, and Wales, brand-new passenger cars require their first MOT exactly <strong>3 years</strong> after the date of first registration (4 years in Northern Ireland).</li>
-            <li><strong>Annual Testing Cadence:</strong> Once a vehicle reaches 3 years of age, an MOT test must be passed every <strong>12 months</strong> to remain road legal.</li>
-            <li><strong>Failure Rate:</strong> In the UK, approximately <strong>29.8% to 31.2%</strong> of all class 4 vehicles fail their annual inspection on the initial presentation.</li>
-            <li><strong>Early Booking Allowance:</strong> Motorists can submit a vehicle for an MOT up to <strong>1 month (minus one day)</strong> prior to the existing certificate's expiry while keeping the identical renewal date.</li>
-            <li><strong>Penalty Enforcement:</strong> Driving without a valid MOT carries a non-endorsable fine of up to <strong>£1,000</strong> under Section 47 of the Road Traffic Act 1988, which rises to <strong>£2,500 and 3 penalty points</strong> if the vehicle is judged in a dangerous condition.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 8: FAQ PREVIEW (ACCORDION) -->
-    <section class="section">
-      <div class="container" style="max-width: 860px;">
-        <div class="section-header">
-          <span class="section-eyebrow">COMMON QUESTIONS</span>
-          <h2>Frequently Asked Questions</h2>
-          <p>Quick answers to the most common UK MOT history questions.</p>
-        </div>
-
-        <div class="accordion-group">
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">
-              <span>Can I check an MOT history without a registration number?</span>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="accordion-body">
-              <p><strong>No.</strong> You must have the UK vehicle registration number (number plate) to check MOT history on the official DVSA system. The database is indexed strictly by vehicle registration mark. You do not, however, need the VIN (chassis number) or logbook unless you want to download a replacement certificate.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">
-              <span>How far back does UK vehicle MOT history go?</span>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="accordion-body">
-              <p>Digital records for vehicles tested in England, Scotland, and Wales date back to <strong>2005</strong>, when the DVSA computerized test stations. Every pass, fail, refusal reason, advisory warning, and verified odometer reading entered since 2005 remains permanently retrievable.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">
-              <span>Is checking an MOT history completely free?</span>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="accordion-body">
-              <p><strong>Yes, 100% free.</strong> The official GOV.UK MOT history tool never charges fees, requires no login, and does not ask for credit card numbers. Beware of third-party websites attempting to charge for basic MOT checks — our guide walks you straight through the free official channel.</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="/mot-history-check/faq/" class="btn btn-secondary">View All 15 Frequently Asked Questions →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 9: FINAL CTA CARD -->
-    <section class="section-tight">
-      <div class="container">
-        <div class="cta-banner">
-          <h2>Ready to Check Any UK Vehicle?</h2>
-          <p>Get instant clarity on MOT validity, past defect warnings, and true odometer progression before buying or booking a test.</p>
-          <a href="/mot-history-check/how-to-check-mot-history/" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.2rem;">Start Free Step-by-Step Guide →</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-    <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="brand-link" style="margin-bottom: 1rem;">
-            <span class="brand-badge">MOT</span>
-            <span class="brand-title" style="color: #FFFFFF;">MOT History Check</span>
-          </div>
-          <p style="font-size: 0.88rem; line-height: 1.6; color: #94A3B8;">
-            MOT History Check is an educational resource helping UK car owners, buyers, and motorists understand roadworthiness certificates, defect categories, and vehicle safety history.
-          </p>
-          <p class="footer-social-proof">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            Guides based on official DVSA/GOV.UK information
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Essential Guides</h4>
-          <ul class="footer-links">
-            <li><a href="/mot-history-check/how-to-check-mot-history/">How to Check MOT</a></li>
-            <li><a href="/mot-history-check/mot-failure-reasons/">Top 10 Failure Reasons</a></li>
-            <li><a href="/mot-history-check/mot-advisories-explained/">Advisories Explained</a></li>
-            <li><a href="/mot-history-check/when-is-my-mot-due/">When Is MOT Due?</a></li>
-            <li><a href="/mot-history-check/faq/">MOT FAQs (15 Answers)</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Official Links & Legal</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener noreferrer">GOV.UK MOT History Service ↗</a></li>
-            <li><a href="https://www.gov.uk/check-mot-status" target="_blank" rel="noopener noreferrer">GOV.UK MOT Status Check ↗</a></li>
-            <li><a href="/mot-history-check/about/">About Us & Editorial Policy</a></li>
-            <li><a href="/mot-history-check/contact/">Contact Editorial Team</a></li>
-            <li><a href="/mot-history-check/privacy-policy/">Privacy Policy</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Disclaimer Box -->
-      <div class="footer-disclaimer-box">
-        <strong>Disclaimer:</strong> Independent guide. Not affiliated with GOV.UK / DVSA. MOT History Check is an educational consumer guide. All vehicle data and roadworthiness records are provided solely by official GOV.UK digital services.
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2024 MOT History Check. All rights reserved.</div>
-        <div style="display: flex; gap: 1.25rem;">
-          <a href="/mot-history-check/privacy-policy/">Privacy Policy</a>
-          <a href="/mot-history-check/about/">About</a>
-          <a href="/mot-history-check/contact/">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/mot-history-check/assets/js/main.js"></script>
+<script src="assets/js/site.js"></script>
 </body>
 </html>

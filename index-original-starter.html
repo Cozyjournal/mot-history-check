@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Check MOT History by Number Plate | Free UK MOT Guide</title>
+<meta name="description" content="Check any UK vehicle's MOT history from its number plate. Learn what passes, fails, advisories and mileage readings mean, and how to spot clocked cars before you buy.">
+<link rel="canonical" href="https://cozyjournal.github.io/mot-history-check/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Check MOT History by Number Plate | Free UK MOT Guide">
+<meta property="og:description" content="Look up a UK vehicle's MOT history and learn how to read it before you buy.">
+<meta property="og:url" content="https://cozyjournal.github.io/mot-history-check/">
+<!-- Add a 1200x630 image at assets/images/og.png -->
+<meta property="og:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--void:#070d1a;--panel:rgba(255,255,255,.045);--line:rgba(140,180,255,.2);--ink:#e9f0ff;--muted:#9aabc9;--cyan:#3de0ff;--plate:#ffc800;--pass:#3ddc84;--fail:#ff6b6b;--warn:#ffc857;
+--head:"Sora","Arial Narrow",Arial,sans-serif;--body:"Figtree",system-ui,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;box-sizing:border-box}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--void)}
+body{margin:0;color:var(--ink);font:18px/1.65 var(--body);padding-bottom:env(safe-area-inset-bottom,0);
+background:radial-gradient(900px 500px at 78% -80px,rgba(61,224,255,.16),transparent 70%),linear-gradient(rgba(140,180,255,.05) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(140,180,255,.05) 1px,transparent 1px) 0 0/48px 48px,var(--void)}
+h1,h2,h3{font-family:var(--head);line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,6.4vw,4.2rem);font-weight:800}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800}
+h3{font-size:1.1rem;font-weight:600}
+a{color:var(--cyan)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.prose{max-width:66ch;color:var(--muted)}
+nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap;padding:calc(14px + env(safe-area-inset-top,0)) 0 14px;font:600 .95rem var(--head)}
+nav .brand{margin-right:auto;font-weight:800;font-size:1.05rem;text-decoration:none;color:var(--ink)}
+nav .brand i{font-style:normal;background:var(--plate);color:#111;border-radius:6px;padding:2px 7px;margin-right:8px}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 76px}
+.hero p.lead{font-size:1.25rem;max-width:54ch;margin:0 0 34px;color:var(--muted)}
+form.check{display:flex;gap:16px;flex-wrap:wrap;align-items:stretch}
+.plate{position:relative;display:flex;align-items:stretch;border:3px solid #111;border-radius:12px;background:var(--plate);overflow:hidden;min-width:min(100%,340px);flex:0 1 400px;box-shadow:0 0 0 1px rgba(255,200,0,.5),0 0 44px rgba(255,200,0,.3)}
+.plate .gb{background:#0a3a9c;color:#fff;font:800 .8rem var(--head);display:flex;align-items:flex-end;justify-content:center;padding:6px 10px}
+.plate input{flex:1;min-width:0;border:0;background:transparent;color:#111;text-transform:uppercase;text-align:center;font:800 2.3rem var(--head);letter-spacing:.06em;padding:12px 8px}
+.plate input::placeholder{color:#111;opacity:.4}
+.plate input:focus-visible{outline:none}
+.plate:focus-within{box-shadow:0 0 0 3px var(--cyan),0 0 54px rgba(61,224,255,.45)}
+.plate:after{content:"";position:absolute;top:0;bottom:0;width:6px;left:-10%;background:var(--cyan);box-shadow:0 0 22px 8px rgba(61,224,255,.7);opacity:0;pointer-events:none}
+.plate.scan:after{animation:scan 1.1s ease-in-out 1}
+@keyframes scan{0%{left:-10%;opacity:1}100%{left:104%;opacity:1}}
+button.go{font:800 1.05rem var(--head);background:var(--cyan);color:#04121c;border:0;border-radius:12px;padding:0 28px;min-height:62px;cursor:pointer}
+button.go:hover{filter:brightness(1.1)}
+.note{font-size:.95rem;color:var(--muted);margin:16px 0 0;max-width:60ch}
+#result{display:none;margin-top:28px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;backdrop-filter:blur(8px)}
+#result.on{display:block}
+#result .row{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:12px 0;flex-wrap:wrap}
+.tag{font:800 .8rem var(--head);padding:2px 10px;border-radius:99px;border:2px solid currentColor}
+.pass{color:var(--pass)}.fail{color:var(--fail)}.warn{color:var(--warn)}
+.mono{font-family:var(--mono)}
+section{padding:68px 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:28px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.tile h3{color:var(--cyan)}
+.tile p{margin:0;color:var(--muted)}
+.grades{display:grid;gap:12px;margin-top:20px}
+.grade{display:flex;gap:16px;align-items:baseline;padding:14px 18px;border:1px solid var(--line);border-left:5px solid currentColor;border-radius:10px;background:var(--panel)}
+.grade b{font:800 1rem var(--head);min-width:96px}
+.grade span{color:var(--ink)}
+.trace{margin-top:28px;display:grid;gap:22px;grid-template-columns:1.4fr 1fr;align-items:start}
+@media(max-width:820px){.trace{grid-template-columns:1fr}}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.chart svg{width:100%;height:auto;display:block}
+.flag{padding:12px 16px;border-left:4px solid var(--fail);background:rgba(255,107,107,.12);border-radius:0 10px 10px 0;font-weight:600}
+.cap{font-size:.9rem;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin-top:22px;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--head);width:32%;color:var(--cyan)}
+tr:last-child th,tr:last-child td{border-bottom:0}
+details{border-top:1px solid var(--line);padding:16px 0}
+summary{font:600 1.1rem var(--head);cursor:pointer}
+details p{margin:.6em 0 0;max-width:66ch;color:var(--muted)}
+footer{padding:40px 0 48px;font-size:.95rem;color:var(--muted);border-top:1px solid var(--line)}
+footer ul{padding:0;list-style:none;display:flex;gap:18px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.plate.scan:after{animation:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is checking MOT history free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The official GOV.UK MOT history service is free and only needs the vehicle's registration number."}},
+{"@type":"Question","name":"How far back does MOT history go?","acceptedAnswer":{"@type":"Answer","text":"For cars, motorcycles and vans, GOV.UK shows tests done since 2005. HGVs, trailers, buses and coaches go back to 2018, and Northern Ireland results start in 2017."}},
+{"@type":"Question","name":"Do I need the V5C logbook to check MOT history?","acceptedAnswer":{"@type":"Answer","text":"No for the test results, which only need the number plate. To see where each test was done, GOV.UK asks for the 11-digit reference number from the V5C."}},
+{"@type":"Question","name":"How early can I get an MOT without losing my renewal date?","acceptedAnswer":{"@type":"Answer","text":"You can take the test up to a month (minus a day) before the current certificate expires and keep the same renewal date."}},
+{"@type":"Question","name":"What is the fine for driving without an MOT?","acceptedAnswer":{"@type":"Answer","text":"Driving without a valid MOT can lead to a fine of up to 1,000 pounds."}}
+]}
+</script>
+</head>
+<body>
+<header>
+<div class="wrap">
+<nav aria-label="Main">
+<a class="brand" href="#top"><i>MOT</i>History Check</a>
+<a href="#read">Read a record</a><a href="#buying">Buying a used car</a><a href="#facts">Key facts</a><a href="#faq">FAQ</a>
+</nav>
+<div class="hero" id="top">
+<h1>Scan any UK plate. See the full MOT history.</h1>
+<p class="lead">Past passes, fails, advisories and mileage in one place, plus a plain-English guide to what it all means.</p>
+<form class="check" id="f" autocomplete="off">
+<label class="plate" id="plate">
+<span class="gb" aria-hidden="true">GB</span>
+<input id="reg" name="reg" maxlength="8" placeholder="AB12 CDE" aria-label="Vehicle registration number" autocapitalize="characters" spellcheck="false" required>
+</label>
+<button class="go" type="submit">Check MOT history</button>
+</form>
+<p class="note" id="mode">Results come from official DVSA records. Free, no sign-up.</p>
+<div id="result" role="status" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+<main>
+<section id="read"><div class="wrap">
+<h2>What an MOT record shows</h2>
+<p class="prose">Every test is stored against the number plate. For cars, motorcycles and vans the online record goes back to 2005.</p>
+<div class="grid">
+<div class="tile"><h3>Pass or fail, and when</h3><p>Each test date and result, plus the certificate expiry and when the next MOT is due.</p></div>
+<div class="tile"><h3>Mileage at every test</h3><p>The odometer reading recorded each year. A reading that drops is the quickest sign of clocking.</p></div>
+<div class="tile"><h3>Failures and advisories</h3><p>What failed, and what the tester flagged as worn or likely to fail soon.</p></div>
+<div class="tile"><h3>Safety recalls</h3><p>Depending on the manufacturer, the record can also show an open safety recall.</p></div>
+</div>
+<h3 style="margin-top:38px">How defects are graded</h3>
+<div class="grades">
+<div class="grade warn"><b>Advisory</b><span>Worth monitoring or repairing. Not a fail on its own.</span></div>
+<div class="grade warn"><b>Minor</b><span>Not serious enough to fail the vehicle. Fix it soon.</span></div>
+<div class="grade fail"><b>Major</b><span>Fails the test. Repair before the vehicle is driven again.</span></div>
+<div class="grade fail"><b>Dangerous</b><span>Fails the test. Illegal to drive on public roads, even if the previous MOT has not expired.</span></div>
+</div>
+</div></section>
+
+<section id="buying"><div class="wrap">
+<h2>Spot a clocked car in seconds</h2>
+<p class="prose">Read the record oldest test first. Mileage should only go up. Also watch for the same defect every year, and fails followed by a pass with no repair detail.</p>
+<div class="trace">
+<figure class="chart" style="margin:0">
+<svg viewBox="0 0 600 230" role="img" aria-label="Chart: mileage rises from 41,300 to 52,900 then drops to 33,100">
+<g stroke="rgba(140,180,255,.2)"><line x1="40" y1="30" x2="580" y2="30"/><line x1="40" y1="100" x2="580" y2="100"/><line x1="40" y1="170" x2="580" y2="170"/></g>
+<polyline points="90,122 300,53" fill="none" stroke="#3de0ff" stroke-width="4" stroke-linecap="round"/>
+<polyline points="300,53 510,171" fill="none" stroke="#ff6b6b" stroke-width="4" stroke-dasharray="9 8" stroke-linecap="round"/>
+<g fill="#070d1a" stroke-width="4"><circle cx="90" cy="122" r="8" stroke="#3de0ff"/><circle cx="300" cy="53" r="8" stroke="#3de0ff"/><circle cx="510" cy="171" r="8" stroke="#ff6b6b"/></g>
+<g fill="#e9f0ff" font-family="JetBrains Mono,monospace" font-size="15" text-anchor="middle">
+<text x="90" y="104">41,300</text><text x="300" y="35">52,900</text><text x="510" y="153" fill="#ff6b6b">33,100</text>
+<text x="90" y="212" fill="#9aabc9">2021</text><text x="300" y="212" fill="#9aabc9">2022</text><text x="510" y="212" fill="#9aabc9">2023</text></g>
+</svg>
+<figcaption class="cap">Example mileage trace, not a real vehicle.</figcaption>
+</figure>
+<div>
+<div class="flag">Mileage is 19,800 lower than the year before. Ask the seller to explain before going further.</div>
+<p class="prose" style="margin-top:18px">An MOT only shows condition on the day of the test. Pair it with service history, a V5C check and a vehicle history check for finance, write-off and stolen markers.</p>
+</div>
+</div>
+</div></section>
+
+<section id="facts"><div class="wrap">
+<h2>Key MOT facts</h2>
+<table>
+<tr><th>First MOT</th><td>3 years after first registration in England, Scotland and Wales. 4 years in Northern Ireland.</td></tr>
+<tr><th>After that</th><td>Every 12 months.</td></tr>
+<tr><th>Testing early</th><td>Up to a month (minus a day) before expiry keeps the same renewal date.</td></tr>
+<tr><th>Maximum fee, car</th><td>£54.85. Many test centres charge less.</td></tr>
+<tr><th>No valid MOT</th><td>Fine of up to £1,000. Separately, driving a vehicle in a dangerous condition can mean up to £2,500 and 3 penalty points.</td></tr>
+<tr><th>Exemptions</th><td>Most vehicles first registered over 40 years ago and not substantially changed.</td></tr>
+<tr><th>Record coverage</th><td>Cars, motorcycles, vans: since 2005. HGVs, trailers, buses, coaches: since 2018. Northern Ireland: since 2017.</td></tr>
+</table>
+<p class="cap" style="margin-top:12px">Source: GOV.UK. Check <a href="https://www.gov.uk/check-mot-history">gov.uk/check-mot-history</a> for the latest rules.</p>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Questions people ask</h2>
+<details><summary>Is checking MOT history free?</summary><p>Yes. The official GOV.UK service is free and needs only the registration number. Be cautious of sites that charge for a basic MOT check.</p></details>
+<details><summary>How far back does MOT history go?</summary><p>Cars, motorcycles and vans: tests since 2005. HGVs, trailers, buses and coaches: since 2018. Northern Ireland results start in 2017.</p></details>
+<details><summary>Do I need the V5C logbook?</summary><p>Not for the results, which only need the number plate. To see where each test was done, GOV.UK asks for the 11-digit reference number from the V5C.</p></details>
+<details><summary>Can I get an MOT early without losing my renewal date?</summary><p>Yes, up to a month (minus a day) before the current certificate expires.</p></details>
+<details><summary>What happens if my vehicle fails with a dangerous defect?</summary><p>You must not drive it on public roads until it is repaired, even if the previous MOT certificate is still valid.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<p>Independent guide, not affiliated with GOV.UK or the DVSA. Vehicle data comes from official DVSA records. Last reviewed: October 2026.</p>
+<ul>
+<li><a href="https://www.gov.uk/check-mot-history">GOV.UK MOT history</a></li>
+<li><a href="https://www.gov.uk/check-mot-status">GOV.UK MOT status</a></li>
+<li><a href="about/">About</a></li><li><a href="contact/">Contact</a></li><li><a href="privacy-policy/">Privacy</a></li>
+</ul>
+<p>&copy; <span id="yr">2026</span> MOT History Check</p>
+</div></footer>
+
+<script>
+// Set this to your serverless proxy URL (Cloudflare Worker / Netlify Function) that adds your DVSA API key.
+// Leave empty to send visitors to the official GOV.UK checker instead.
+const MOT_API_PROXY = "";
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+const f = document.getElementById("f"), reg = document.getElementById("reg"), out = document.getElementById("result"), mode = document.getElementById("mode"), plateEl = document.getElementById("plate");
+if (!MOT_API_PROXY) mode.textContent = "This opens the official GOV.UK checker in a new tab. Your plate is copied so you can paste it there.";
+
+function el(tag, text, cls) { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; }
+function fmtDate(s) { const d = new Date(s); return isNaN(d) ? String(s || "") : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+
+function render(d, plate) {
+  out.replaceChildren();
+  const tests = (d.motTests || []).slice().sort((a, b) => new Date(a.completedDate) - new Date(b.completedDate));
+  out.append(el("h3", plate + " " + ([d.make, d.model].filter(Boolean).join(" "))));
+  if (!tests.length) { out.append(el("p", "No MOT tests found for this plate. It may be too new, exempt, or registered in Northern Ireland.")); return; }
+  tests.slice().reverse().forEach((t, i, arr) => {
+    const row = el("div", undefined, "row"), left = el("div");
+    const pass = String(t.testResult).toUpperCase() === "PASSED";
+    left.append(el("strong", fmtDate(t.completedDate) + " "), el("span", pass ? "Pass" : "Fail", "tag " + (pass ? "pass" : "fail")));
+    left.append(el("div", "Odometer: " + (t.odometerValue ? Number(t.odometerValue).toLocaleString("en-GB") + " " + (t.odometerUnit || "mi") : "No reading"), "mono"));
+    (t.rfrAndComments || []).forEach(r => left.append(el("div", r.type + ": " + r.text, "cap")));
+    const older = arr[i + 1];
+    if (older && Number(older.odometerValue) > Number(t.odometerValue) && t.odometerUnit === older.odometerUnit)
+      left.append(el("div", "Mileage is lower than the previous test. Ask the seller to explain.", "flag"));
+    row.append(left);
+    if (i === 0 && t.expiryDate) row.append(el("div", "Expires " + fmtDate(t.expiryDate)));
+    out.append(row);
+  });
+}
+
+f.addEventListener("submit", async e => {
+  e.preventDefault();
+  const plate = reg.value.replace(/\s+/g, "").toUpperCase();
+  if (plate.length < 2) return;
+  plateEl.classList.remove("scan"); void plateEl.offsetWidth; plateEl.classList.add("scan");
+  out.className = "on";
+  if (!MOT_API_PROXY) {
+    try { await navigator.clipboard.writeText(plate); } catch (_) {}
+    out.replaceChildren(el("p", "Plate " + plate + " copied. Paste it on the GOV.UK page that just opened."));
+    window.open("https://www.gov.uk/check-mot-history", "_blank", "noopener");
+    return;
+  }
+  out.replaceChildren(el("p", "Scanning " + plate + "..."));
+  try {
+    const r = await fetch(MOT_API_PROXY + "?registration=" + encodeURIComponent(plate));
+    if (r.status === 404) { out.replaceChildren(el("p", "No vehicle found for " + plate + ". Check the plate and try again.")); return; }
+    if (!r.ok) throw new Error(r.status);
+    render(await r.json(), plate);
+  } catch (_) {
+    out.replaceChildren(el("p", "The lookup is unavailable right now. Use the official GOV.UK checker instead."));
+  }
+});
+</script>
+</body>
+</html>
