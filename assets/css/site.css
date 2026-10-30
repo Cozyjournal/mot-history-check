@@ -673,3 +673,7 @@ footer a:hover {
     animation: none;
   }
 }
+
+/* Article / page hero images (added 2026-10-30) */
+.article-hero { margin: 0 0 32px; }
+.article-hero img { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid rgba(0, 229, 255, 0.25); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45); }
