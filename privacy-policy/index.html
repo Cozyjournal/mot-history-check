@@ -15,6 +15,8 @@
 <meta property="og:url" content="https://cozyjournal.github.io/mot-history-check/privacy-policy/">
 <meta property="og:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy &amp; Data Protection">
+<meta name="twitter:description" content="Plain-English privacy policy explaining our strict zero-tracking, no-cookie architecture and transparent data handling practices.">
 <link rel="icon" href="../assets/images/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,8 +116,7 @@
 <p>When you enter a vehicle number plate into our search box on the homepage or guide pages, here is exactly what happens behind the scenes:</p>
 <ul>
 <li><strong>Lookup via official GOV.UK:</strong> While direct API proxy lookup is in development, submitting a registration plate simply copies the formatted text to your local clipboard and opens the official, secure GOV.UK testing portal in a separate tab. The number plate is never transmitted to or stored on any server owned by this project.</li>
-<li><strong>Lookup via Serverless Proxy (when active):</strong> When direct API lookup is configured via our Cloudflare Worker proxy, the plate string is sent over encrypted HTTPS solely to query the official DVSA MOT History API. The serverless proxy validates the plate format, retrieves the official test records, and returns the response immediately to your browser.</li>
-<li><strong>Zero logging of registration numbers:</strong> The lookup proxy explicitly does not record, log, or persist vehicle registration numbers in database records or server log files. Once the test response is delivered, the query string is discarded from temporary memory.</li>
+<li><strong>Zero logging of registration numbers:</strong> The lookup runs entirely in your own browser — this website has no server that receives your number plate, and nothing about it is recorded, logged, or stored by us.</li>
 </ul>
 
 <h2>4. External requests: Google Fonts</h2>
