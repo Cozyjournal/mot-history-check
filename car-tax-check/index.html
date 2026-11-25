@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Free Car Tax Check by Number Plate — Taxed, Untaxed or SORN | MOT History Check</title>
+<meta name="description" content="Free car tax check: enter a UK number plate to see if a vehicle is taxed, untaxed or declared SORN, when the tax is due, and its MOT status — instantly, from official records.">
+<link rel="canonical" href="https://cozyjournal.github.io/mot-history-check/car-tax-check/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Car Tax Check by Number Plate">
+<meta property="og:site_name" content="MOT History Check">
+<meta property="og:description" content="See whether a UK vehicle is taxed, untaxed or SORN, when its tax is due, and its MOT status. Free and instant, from official records.">
+<meta property="og:url" content="https://cozyjournal.github.io/mot-history-check/car-tax-check/">
+<meta property="og:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Car Tax Check by Number Plate">
+<meta name="twitter:description" content="Taxed, untaxed or SORN — plus the tax due date and MOT status. Free and instant, from official records.">
+<meta name="twitter:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
+<link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../assets/images/icon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/images/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cozyjournal.github.io/mot-history-check/" },
+        { "@type": "ListItem", "position": 2, "name": "Car Tax Check", "item": "https://cozyjournal.github.io/mot-history-check/car-tax-check/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this car tax check free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The check is completely free and needs only the vehicle's registration number. No account, no logbook, no payment details." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the tax check show?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It shows whether the vehicle is taxed, untaxed or declared off the road (SORN), and the date the tax is next due. The same result also shows the vehicle's MOT status and expiry date, plus its make, model, colour and fuel type." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the check show how much tax I have to pay?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The check shows the tax status and due date, not the amount. How much you pay depends on when the vehicle was first registered and its CO2 emissions, and rates change each April. GOV.UK shows the exact amount when you tax the vehicle." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if a vehicle is untaxed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An untaxed vehicle must not be driven or parked on a public road unless it is being taken to a pre-booked MOT test. The registered keeper can be fined, and the vehicle can be clamped or impounded. Tax it online with the reference number from the V5C logbook or the reminder letter, or declare it SORN if it is kept off the road." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+<div class="wrap">
+<nav aria-label="Main navigation">
+<a class="brand" href="../"><i>MOT</i>History Check</a>
+<a href="../mot-check/">MOT check</a>
+<a href="./" aria-current="page">Tax check</a>
+<a href="../how-to-check-mot-history/">How to check</a>
+<a href="../mot-failure-reasons/">Failure reasons</a>
+<a href="../when-is-my-mot-due/">MOT due</a>
+<a href="../faq/">FAQ</a>
+</nav>
+
+<div class="hero">
+<h1>Free Car Tax Check by Number Plate</h1>
+<p class="lead">Enter a UK registration to see whether the vehicle is taxed, untaxed or declared SORN, when the tax is next due — and its MOT status in the same result.</p>
+<form class="check" id="f" autocomplete="off">
+<label class="plate" id="plate">
+<span class="gb" aria-hidden="true">GB</span>
+<input id="reg" name="reg" maxlength="8" placeholder="AB12 CDE" aria-label="Vehicle registration number" autocapitalize="characters" spellcheck="false" required>
+</label>
+<button class="go" type="submit">Check tax status</button>
+</form>
+<p class="note" id="mode">Free instant check, right here on this page — official records, no sign-up. Independent guide, not GOV.UK.</p>
+<ul class="wecheck">
+<li>Tax status</li>
+<li>Tax due date</li>
+<li>SORN status</li>
+<li>MOT status &amp; expiry</li>
+<li>Vehicle details</li>
+</ul>
+<p class="note tryline">No plate handy? Try an example: <a href="#" class="try-reg" data-reg="YH07ABB">YH07 ABB</a></p>
+<div id="result" role="status" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+<main id="main">
+<section><div class="wrap">
+<h2>What the three tax statuses mean</h2>
+<p class="prose">Every UK vehicle sits in one of these three states. The check reads the current one straight from the official record.</p>
+<div class="grid">
+<div class="tile"><h3>Taxed</h3><p>The vehicle is taxed up to the due date shown. It can be driven and parked on public roads, as long as it also has a valid MOT (if it needs one) and insurance.</p></div>
+<div class="tile"><h3>Untaxed</h3><p>The tax has run out and no SORN is in place. The vehicle must not be driven or kept on a public road. The keeper risks a fine, and the vehicle can be clamped or impounded.</p></div>
+<div class="tile"><h3>SORN</h3><p>The keeper has made a Statutory Off Road Notification. The vehicle must be kept off public roads entirely — on a driveway, in a garage or on private land — until it is taxed again, sold, scrapped or exported.</p></div>
+</div>
+<p class="prose" style="margin-top:18px">One journey is still allowed for untaxed and SORN vehicles: driving to a <strong>pre-booked MOT test</strong>. Our guides cover the rules in full — <a href="../tax-or-insure-car-without-mot/">can you tax or insure a car without an MOT</a>, and <a href="../sorn-car-mot-rules/">SORN and MOT rules</a>.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Tax and MOT work together</h2>
+<p class="prose">You cannot tax a vehicle that needs an MOT but does not have a valid one — the tax service checks the MOT record before it lets you pay. That is why this result shows both together: if the tax is due soon and the MOT has expired, book the MOT first, then tax the vehicle as soon as it passes.</p>
+<p class="prose">Buying a used car? Tax does <strong>not</strong> transfer with the vehicle — it ends when the car is sold, and the buyer must tax it before driving away. Check the status here before you view, then run the full <a href="../mot-check/">MOT check</a> to read its test history.</p>
+<p class="prose">How much the tax will be depends on the vehicle's first registration date and CO2 emissions, and the rates change each April — GOV.UK shows the exact amount when you tax it. This check shows the status and due date, never a guessed price.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Questions about this check</h2>
+<details><summary>Is this car tax check free?</summary><p>Yes. The check is completely free and needs only the vehicle's registration number. No account, no logbook, no payment details.</p></details>
+<details><summary>What does the tax check show?</summary><p>Whether the vehicle is taxed, untaxed or declared off the road (SORN), and the date the tax is next due. The same result also shows the vehicle's MOT status and expiry date, plus its make, model, colour and fuel type.</p></details>
+<details><summary>Does the check show how much tax I have to pay?</summary><p>No. The check shows the tax status and due date, not the amount. How much you pay depends on when the vehicle was first registered and its CO2 emissions, and rates change each April. GOV.UK shows the exact amount when you tax the vehicle.</p></details>
+<details><summary>What happens if a vehicle is untaxed?</summary><p>An untaxed vehicle must not be driven or parked on a public road unless it is being taken to a pre-booked MOT test. The registered keeper can be fined, and the vehicle can be clamped or impounded. Tax it online with the reference number from the V5C logbook or the reminder letter, or declare it SORN if it is kept off the road.</p></details>
+<p class="cap" style="margin-top:12px">Last reviewed: November 2026.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<p>Independent guide, not affiliated with GOV.UK or the DVSA. Vehicle data comes from official DVSA records. Last reviewed: November 2026.</p>
+<ul>
+<li><a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener">GOV.UK MOT history</a></li>
+<li><a href="https://www.gov.uk/vehicle-tax" target="_blank" rel="noopener">GOV.UK vehicle tax</a></li>
+<li><a href="./">Car tax check</a></li>
+<li><a href="../mot-check/">Free MOT check</a></li>
+<li><a href="../tax-or-insure-car-without-mot/">Tax or insure without an MOT</a></li>
+<li><a href="../sorn-car-mot-rules/">SORN and MOT rules</a></li>
+<li><a href="../how-to-check-mot-history/">How to check</a></li>
+<li><a href="../when-is-my-mot-due/">MOT due</a></li>
+<li><a href="../mot-cost/">MOT cost</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../privacy-policy/">Privacy</a></li>
+</ul>
+<p>MOT data provided by <a href="https://isitagoodcar.com" target="_blank" rel="noopener">IsItAGoodCar.com</a> (by Matter Logic).</p>
+<p>&copy; <span id="yr">2026</span> MOT History Check</p>
+</div></footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

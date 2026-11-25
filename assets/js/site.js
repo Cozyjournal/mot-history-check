@@ -79,12 +79,18 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.append(motCard);
 
     const tax = v.tax || d.tax || null;
+    let taxCard = null;
     if (tax && tax.status) {
-      const taxCard = el("div", undefined, "chk-card");
+      taxCard = el("div", undefined, "chk-card");
       taxCard.append(el("span", "Tax", "chk-label"));
       const taxed = String(tax.status).toLowerCase() === "taxed";
       taxCard.append(el("span", tax.status, "chk-big " + (taxed ? "pass" : "warn")));
       if (tax.due_date) taxCard.append(el("span", "Due " + fmtDate(tax.due_date), "chk-sub"));
+    }
+    // On the car tax check page the tax card leads; everywhere else MOT leads
+    if (taxCard && location.pathname.includes("car-tax-check")) {
+      cards.insertBefore(taxCard, motCard);
+    } else if (taxCard) {
       cards.append(taxCard);
     }
     out.append(cards);
