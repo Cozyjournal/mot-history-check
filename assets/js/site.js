@@ -1,6 +1,7 @@
-// Set this to your serverless proxy URL (Cloudflare Worker) that adds your DVSA API key.
-// Leave empty while the DVSA API key is pending; visitors will be directed to the official GOV.UK checker.
-const MOT_API_PROXY = "";
+// Live MOT checker — calls the mot-check Cloudflare Worker, which adds the
+// IsItAGoodCar (Matter Logic) API key server-side and returns DVSA data.
+// No key or secret ever appears in this file or in the browser.
+const MOT_API_PROXY = "https://mot-check.ahmedbinumar000.workers.dev/check";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Update copyright year across all pages
@@ -22,40 +23,128 @@ document.addEventListener("DOMContentLoaded", () => {
     return isNaN(d) ? String(s || "") : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
   }
 
-  // Render real DVSA response
-  function render(d, plate, outContainer) {
-    outContainer.replaceChildren();
-    const tests = (d.motTests || []).slice().sort((a, b) => new Date(a.completedDate) - new Date(b.completedDate));
-    outContainer.append(el("h3", plate + " " + ([d.make, d.model].filter(Boolean).join(" "))));
-    
+  function titleCase(s) {
+    return String(s || "").toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  const DEFECT_LABELS = {
+    advisory: "Advisory",
+    minor: "Minor",
+    major: "Major",
+    dangerous: "Dangerous",
+    fail: "Fail item",
+    prs: "PRS",
+    user: "Note"
+  };
+
+  // Render the Worker response: { registration, vehicle, mot, attribution }
+  function render(d, plate, out) {
+    out.replaceChildren();
+    const v = d.vehicle || {};
+    const m = d.mot || {};
+    const tests = Array.isArray(m.tests) ? m.tests.slice() : [];
+
+    const shownPlate = v.registration_formatted || plate;
+    const name = [titleCase(v.make), titleCase(v.model)].filter(Boolean).join(" ");
+    out.append(el("h3", shownPlate + (name ? " — " + name : ""), "chk-title"));
+
+    // Vehicle facts line
+    const facts = [];
+    if (v.year) facts.push(String(v.year));
+    if (v.colour) facts.push(titleCase(v.colour));
+    if (v.fuel_type) facts.push(titleCase(v.fuel_type));
+    if (v.engine_capacity_cc) facts.push(Number(v.engine_capacity_cc).toLocaleString("en-GB") + " cc");
+    if (v.first_registration_date) facts.push("First registered " + fmtDate(v.first_registration_date));
+    if (facts.length) out.append(el("p", facts.join(" · "), "chk-facts"));
+
+    // Status cards: MOT + Tax
+    const cards = el("div", undefined, "chk-cards");
+
+    const motCard = el("div", undefined, "chk-card");
+    motCard.append(el("span", "MOT", "chk-label"));
+    const motValid = String(m.status || "").toLowerCase() === "valid";
+    const motStatusText = m.raw_status || (m.status ? titleCase(m.status) : "No record");
+    const motBig = el("span", motStatusText, "chk-big " + (motValid ? "pass" : "fail"));
+    motCard.append(motBig);
+    if (m.expiry_date) {
+      motCard.append(el("span", (motValid ? "Expires " : "Expired ") + fmtDate(m.expiry_date), "chk-sub"));
+    }
+    cards.append(motCard);
+
+    const tax = v.tax || d.tax || null;
+    if (tax && tax.status) {
+      const taxCard = el("div", undefined, "chk-card");
+      taxCard.append(el("span", "Tax", "chk-label"));
+      const taxed = String(tax.status).toLowerCase() === "taxed";
+      taxCard.append(el("span", tax.status, "chk-big " + (taxed ? "pass" : "warn")));
+      if (tax.due_date) taxCard.append(el("span", "Due " + fmtDate(tax.due_date), "chk-sub"));
+      cards.append(taxCard);
+    }
+    out.append(cards);
+
+    // Summary line: latest mileage + test counts
+    const bits = [];
+    if (m.latest_mileage && m.latest_mileage.value) {
+      bits.push("Latest mileage " + Number(m.latest_mileage.value).toLocaleString("en-GB") + " " + (m.latest_mileage.unit || "miles") +
+        (m.latest_test_date ? " (" + fmtDate(m.latest_test_date) + ")" : ""));
+    }
+    if (m.counts && m.counts.total) {
+      bits.push(m.counts.total + " tests: " + (m.counts.passes || 0) + " passed, " + (m.counts.failures || 0) + " failed");
+    }
+    if (bits.length) out.append(el("p", bits.join(" · "), "chk-facts"));
+
     if (!tests.length) {
-      outContainer.append(el("p", "No MOT tests found for this plate. It may be too new, exempt, or registered in Northern Ireland."));
-      return;
+      let msg = "No MOT tests recorded for this vehicle yet. It may be too new for its first MOT, exempt, or registered in Northern Ireland.";
+      if (m.test_due_date && new Date(m.test_due_date) > new Date()) {
+        msg = "No MOT tests recorded yet. First MOT due " + fmtDate(m.test_due_date) + ".";
+      }
+      out.append(el("p", msg));
     }
 
-    tests.slice().reverse().forEach((t, i, arr) => {
+    // Full test history, newest first
+    tests.forEach((t, i, arr) => {
       const row = el("div", undefined, "row");
       const left = el("div");
-      const pass = String(t.testResult).toUpperCase() === "PASSED";
-      
-      left.append(el("strong", fmtDate(t.completedDate) + " "), el("span", pass ? "Pass" : "Fail", "tag " + (pass ? "pass" : "fail")));
-      left.append(el("div", "Odometer: " + (t.odometerValue ? Number(t.odometerValue).toLocaleString("en-GB") + " " + (t.odometerUnit || "mi") : "No reading"), "mono"));
-      
-      (t.rfrAndComments || []).forEach(r => {
-        left.append(el("div", r.type + ": " + r.text, "cap"));
+      const passed = String(t.test_result || "").toLowerCase() === "passed";
+      left.append(
+        el("strong", fmtDate(t.test_date) + " "),
+        el("span", passed ? "Pass" : "Fail", "tag " + (passed ? "pass" : "fail"))
+      );
+      const miles = t.mileage && t.mileage.value ? Number(t.mileage.value).toLocaleString("en-GB") + " " + (t.mileage.unit || "miles") : "No reading";
+      left.append(el("div", "Odometer: " + miles, "mono"));
+
+      (Array.isArray(t.defects) ? t.defects : []).forEach(df => {
+        const line = el("div", undefined, "cap" + (df.dangerous ? " fail" : ""));
+        const label = DEFECT_LABELS[String(df.type || "").toLowerCase()] || titleCase(df.type || "Note");
+        line.append(el("strong", label + ": "), document.createTextNode(String(df.text || "")));
+        left.append(line);
       });
 
       const older = arr[i + 1];
-      if (older && Number(older.odometerValue) > Number(t.odometerValue) && t.odometerUnit === older.odometerUnit) {
+      if (older && older.mileage && t.mileage &&
+          Number(older.mileage.value) > Number(t.mileage.value) &&
+          (older.mileage.unit || "miles") === (t.mileage.unit || "miles")) {
         left.append(el("div", "Mileage is lower than the previous test. Ask the seller to explain.", "flag"));
       }
 
       row.append(left);
-      if (i === 0 && t.expiryDate) {
-        row.append(el("div", "Expires " + fmtDate(t.expiryDate)));
+      if (i === 0 && t.expiry_date) {
+        row.append(el("div", "Expires " + fmtDate(t.expiry_date)));
       }
-      outContainer.append(row);
+      out.append(row);
     });
+
+    if (d.attribution) out.append(el("p", d.attribution, "cap chk-attr"));
+  }
+
+  function govukFallback(out) {
+    const p = el("p", "The live lookup is having a problem right now. You can check free on the official GOV.UK service instead: ");
+    const a = el("a", "GOV.UK MOT history");
+    a.href = "https://www.gov.uk/check-mot-history";
+    a.target = "_blank";
+    a.rel = "noopener";
+    p.appendChild(a);
+    out.replaceChildren(p);
   }
 
   // Initialize all plate lookup forms on the page
@@ -64,8 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
   forms.forEach(form => {
     const regInput = form.querySelector("input[name='reg'], #reg");
     const plateBox = form.querySelector(".plate");
-    const noteEl = form.parentElement.querySelector(".note, #mode");
-    
+
     // Find or create result container
     let out = form.parentElement.querySelector("#result, .checker-result");
     if (!out) {
@@ -73,10 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
       out.setAttribute("role", "status");
       out.setAttribute("aria-live", "polite");
       form.parentElement.appendChild(out);
-    }
-
-    if (!MOT_API_PROXY && noteEl) {
-      noteEl.innerHTML = 'Direct lookup via API is coming soon. Entering your plate copies it and opens the official <a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener">GOV.UK MOT history service</a>.';
     }
 
     form.addEventListener("submit", async e => {
@@ -92,46 +176,28 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       out.className = out.id === "result" ? "on" : "checker-result on";
-
-      if (!MOT_API_PROXY) {
-        try {
-          await navigator.clipboard.writeText(plate);
-        } catch (_) {}
-        
-        out.replaceChildren();
-        const p = el("p", "Plate " + plate + " copied to clipboard! Direct lookup via API is coming soon. Opening the official GOV.UK checker now — simply paste your registration there.");
-        const btn = el("p");
-        const a = el("a", "Open GOV.UK MOT History Check ↗");
-        a.href = "https://www.gov.uk/check-mot-history";
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.style.display = "inline-block";
-        a.style.marginTop = "8px";
-        btn.appendChild(a);
-        out.append(p, btn);
-
-        window.open("https://www.gov.uk/check-mot-history", "_blank", "noopener");
-        return;
-      }
-
-      out.replaceChildren(el("p", "Scanning " + plate + "..."));
+      out.replaceChildren(el("p", "Checking " + plate + "…"));
 
       try {
-        const r = await fetch(MOT_API_PROXY + "?registration=" + encodeURIComponent(plate));
-        if (r.status === 404) {
-          out.replaceChildren(el("p", "No vehicle found for " + plate + ". Check the registration number and try again."));
+        const r = await fetch(MOT_API_PROXY + "?reg=" + encodeURIComponent(plate));
+        const data = await r.json().catch(() => null);
+
+        if (!r.ok) {
+          const code = data && data.error ? data.error.code : "";
+          if (code === "not_found") {
+            out.replaceChildren(el("p", "No vehicle found for " + plate + ". Check the registration number and try again."));
+          } else if (code === "invalid_registration") {
+            out.replaceChildren(el("p", "That does not look like a valid UK registration. Check the plate and try again."));
+          } else if (code === "rate_limited") {
+            out.replaceChildren(el("p", "Lots of people are checking right now. Wait a minute and try again."));
+          } else {
+            govukFallback(out);
+          }
           return;
         }
-        if (!r.ok) throw new Error(r.status);
-        const data = await r.json();
         render(data, plate, out);
       } catch (_) {
-        out.replaceChildren(el("p", "The live lookup is currently unavailable. Please check directly on the official GOV.UK MOT history service: "));
-        const fallbackLink = el("a", "GOV.UK MOT History");
-        fallbackLink.href = "https://www.gov.uk/check-mot-history";
-        fallbackLink.target = "_blank";
-        fallbackLink.rel = "noopener";
-        out.appendChild(fallbackLink);
+        govukFallback(out);
       }
     });
   });

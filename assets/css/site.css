@@ -701,3 +701,46 @@ h2{scroll-margin-top:90px}
 .ig-big{font-size:1.2rem;font-weight:800;display:block;margin-bottom:4px;color:#0b3b3b}
 .ig-block p{margin:0;font-size:.93rem}
 @media (max-width:520px){.ig-grid{grid-template-columns:1fr}}
+
+/* Live checker (added 2026-11-26) */
+.wecheck {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 22px 0 0;
+  padding: 0;
+  font-size: 0.98rem;
+}
+.wecheck li::before {
+  content: "✓";
+  color: var(--cyan);
+  font-weight: 800;
+  margin-right: 7px;
+}
+.chk-title { margin: 0 0 6px; }
+.chk-facts { color: var(--muted); margin: 4px 0 10px; }
+.chk-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 14px 0 6px;
+}
+.chk-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.chk-label {
+  font: 800 0.75rem var(--head);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.chk-big { font: 800 1.55rem var(--head); line-height: 1.15; }
+.chk-sub { color: var(--muted); font-size: 0.95rem; }
+.chk-attr { margin-top: 14px; }

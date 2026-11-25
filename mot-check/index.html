@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Free MOT Check by Number Plate — MOT History, Tax &amp; Mileage | MOT History Check</title>
+<meta name="description" content="Free MOT check: enter a UK number plate to see MOT status and expiry, the full MOT history, mileage records, failures and advisories, and tax status — instantly, from official DVSA records.">
+<link rel="canonical" href="https://cozyjournal.github.io/mot-history-check/mot-check/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free MOT Check by Number Plate">
+<meta property="og:site_name" content="MOT History Check">
+<meta property="og:description" content="Enter a UK registration to see MOT status, full test history, mileage, failures and advisories, and tax status. Free, from official DVSA records.">
+<meta property="og:url" content="https://cozyjournal.github.io/mot-history-check/mot-check/">
+<meta property="og:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free MOT Check by Number Plate">
+<meta name="twitter:description" content="MOT status, full history, mileage, failures and advisories, and tax status — free and instant, from official DVSA records.">
+<meta name="twitter:image" content="https://cozyjournal.github.io/mot-history-check/assets/images/og.png">
+<link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../assets/images/icon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/images/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cozyjournal.github.io/mot-history-check/" },
+        { "@type": "ListItem", "position": 2, "name": "Free MOT Check", "item": "https://cozyjournal.github.io/mot-history-check/mot-check/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this MOT check free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The check is completely free and needs only the vehicle's registration number. You do not need an account, the V5C logbook, or any payment details." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the MOT check show?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It shows whether the vehicle has a valid MOT and when it expires, every past MOT test result with its mileage reading, the failures and advisories recorded at each test, the vehicle's tax status, and basic vehicle details such as make, model, colour and fuel type." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the data come from?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The results come from official DVSA MOT records, provided by IsItAGoodCar.com (by Matter Logic). The record covers cars, motorcycles and vans from 2005 onwards." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is there no MOT record for my car?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A vehicle under three years old has not had its first MOT yet, so no record exists. Some older vehicles are exempt, and Northern Ireland tests are recorded from 2017. Check the registration for spaces or similar-looking characters, such as 0 and O." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+<div class="wrap">
+<nav aria-label="Main navigation">
+<a class="brand" href="../"><i>MOT</i>History Check</a>
+<a href="./" aria-current="page">MOT check</a>
+<a href="../how-to-check-mot-history/">How to check</a>
+<a href="../mot-failure-reasons/">Failure reasons</a>
+<a href="../mot-advisories-explained/">Advisories</a>
+<a href="../when-is-my-mot-due/">MOT due</a>
+<a href="../faq/">FAQ</a>
+</nav>
+
+<div class="hero">
+<h1>Free MOT Check by Number Plate</h1>
+<p class="lead">Enter a UK registration to see the MOT status, full test history, mileage, failures and advisories, and tax status — instantly.</p>
+<form class="check" id="f" autocomplete="off">
+<label class="plate" id="plate">
+<span class="gb" aria-hidden="true">GB</span>
+<input id="reg" name="reg" maxlength="8" placeholder="AB12 CDE" aria-label="Vehicle registration number" autocapitalize="characters" spellcheck="false" required>
+</label>
+<button class="go" type="submit">Check MOT history</button>
+</form>
+<p class="note" id="mode">Free instant check, right here on this page — official DVSA records, no sign-up. Independent guide, not GOV.UK.</p>
+<ul class="wecheck">
+<li>MOT status &amp; expiry date</li>
+<li>Full MOT history</li>
+<li>Mileage records</li>
+<li>Failures &amp; advisories</li>
+<li>Tax status</li>
+</ul>
+<div id="result" role="status" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+<main id="main">
+<section><div class="wrap">
+<h2>What this check shows</h2>
+<p class="prose">One plate gives you the vehicle's whole MOT story. Everything below comes straight from the official DVSA test record.</p>
+<div class="grid">
+<div class="tile"><h3>MOT status &amp; expiry</h3><p>Whether the MOT is valid today and the exact date it expires, so you know where you stand before driving or taxing the vehicle.</p></div>
+<div class="tile"><h3>Full MOT history</h3><p>Every test on record — pass and fail results with dates, going back to 2005 for cars, motorcycles and vans.</p></div>
+<div class="tile"><h3>Mileage at every test</h3><p>The odometer reading recorded at each test. A reading that goes down is the clearest warning sign of a clocked car.</p></div>
+<div class="tile"><h3>Failures &amp; advisories</h3><p>What failed each test, and the advisories testers flagged as worn or on the way out — the best clue to future repair bills.</p></div>
+<div class="tile"><h3>Tax status</h3><p>Whether the vehicle is taxed, untaxed or declared SORN, and the date the tax is next due.</p></div>
+<div class="tile"><h3>Vehicle details</h3><p>Make, model, year, colour, fuel type and engine size, so you can confirm the plate matches the vehicle in front of you.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>How to read the result</h2>
+<p class="prose">Start with the two status cards. A valid MOT with months left and a taxed status means the vehicle is legal to drive today. Then read the history from the oldest test to the newest: mileage should climb steadily, and the same advisory appearing year after year means a repair that keeps being put off.</p>
+<p class="prose">A single fail is not a red flag on its own — most vehicles fail at some point, usually on cheap items like lamps, tyres and brakes. What matters is the pattern: repeated failures on the same parts, a mileage drop, or a long gap with no tests at all. Our guides explain <a href="../mot-advisories-explained/">what advisories mean</a>, the <a href="../mot-failure-reasons/">most common failure reasons</a>, and what to do about <a href="../wrong-mileage-on-mot-record/">wrong mileage on an MOT record</a>.</p>
+<p class="prose">Buying a used car? Pair this check with our <a href="../check-mot-history-buying-used-car/">used-car MOT checklist</a> before you view it.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Questions about this check</h2>
+<details><summary>Is this MOT check free?</summary><p>Yes. The check is completely free and needs only the vehicle's registration number. You do not need an account, the V5C logbook, or any payment details.</p></details>
+<details><summary>What does the MOT check show?</summary><p>Whether the vehicle has a valid MOT and when it expires, every past MOT test result with its mileage reading, the failures and advisories recorded at each test, the vehicle's tax status, and basic vehicle details such as make, model, colour and fuel type.</p></details>
+<details><summary>Where does the data come from?</summary><p>The results come from official DVSA MOT records, provided by IsItAGoodCar.com (by Matter Logic). The record covers cars, motorcycles and vans from 2005 onwards.</p></details>
+<details><summary>Why is there no MOT record for my car?</summary><p>A vehicle under three years old has not had its first MOT yet, so no record exists. Some older vehicles are exempt, and Northern Ireland tests are recorded from 2017. Also check the registration for similar-looking characters, such as 0 and O.</p></details>
+<p class="cap" style="margin-top:12px">Last reviewed: November 2026.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<p>Independent guide, not affiliated with GOV.UK or the DVSA. Vehicle data comes from official DVSA records. Last reviewed: November 2026.</p>
+<ul>
+<li><a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener">GOV.UK MOT history</a></li>
+<li><a href="https://www.gov.uk/check-mot-status" target="_blank" rel="noopener">GOV.UK MOT status</a></li>
+<li><a href="./">Free MOT check</a></li>
+<li><a href="../how-to-check-mot-history/">How to check</a></li>
+<li><a href="../mot-failure-reasons/">Failure reasons</a></li>
+<li><a href="../mot-advisories-explained/">Advisories</a></li>
+<li><a href="../when-is-my-mot-due/">MOT due</a></li>
+<li><a href="../mot-cost/">MOT cost</a></li>
+<li><a href="../mot-exemptions/">Exemptions</a></li>
+<li><a href="../faq/">FAQ</a></li>
+<li><a href="../about/">About</a></li>
+<li><a href="../contact/">Contact</a></li>
+<li><a href="../privacy-policy/">Privacy</a></li>
+</ul>
+<p>MOT data provided by <a href="https://isitagoodcar.com" target="_blank" rel="noopener">IsItAGoodCar.com</a> (by Matter Logic).</p>
+<p>&copy; <span id="yr">2026</span> MOT History Check</p>
+</div></footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
