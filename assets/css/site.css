@@ -744,3 +744,19 @@ h2{scroll-margin-top:90px}
 .chk-big { font: 800 1.55rem var(--head); line-height: 1.15; }
 .chk-sub { color: var(--muted); font-size: 0.95rem; }
 .chk-attr { margin-top: 14px; }
+
+/* Checker extras (2026-11-26) */
+.mileage-chart { width: 100%; height: auto; display: block; }
+.chk-chart { margin: 16px 0 6px; }
+.cal-btn {
+  margin-top: 14px;
+  background: none;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  border-radius: 99px;
+  padding: 9px 18px;
+  font: 600 0.95rem var(--head);
+  cursor: pointer;
+}
+.cal-btn:hover { background: rgba(61, 224, 255, 0.12); }
+.tryline a { color: var(--cyan); font-weight: 600; }
