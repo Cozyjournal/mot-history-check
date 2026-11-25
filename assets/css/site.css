@@ -696,3 +696,8 @@ h2{scroll-margin-top:90px}
 .toc,.toc .toc-title{color:#16323f}
 .toc a{color:#0b5cad}
 .infographic{color:#16323f}
+.ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ig-block{border:1px solid #d8e2e2;border-radius:8px;padding:12px 14px;background:#f9fbfb}
+.ig-big{font-size:1.2rem;font-weight:800;display:block;margin-bottom:4px;color:#0b3b3b}
+.ig-block p{margin:0;font-size:.93rem}
+@media (max-width:520px){.ig-grid{grid-template-columns:1fr}}
